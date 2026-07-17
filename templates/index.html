@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="card">
+        <h1>QR Code Generator</h1>
+        <p class="subtitle">Turn any link or text into a scannable QR code.</p>
+
+        <!-- Form submits back to "/" using POST, so Flask can process the input -->
+        <form class="qr-form" method="post" action="/">
+            <input type="text" name="url_text" placeholder="Enter a URL or text"
+                   value="{{ submitted_text or '' }}" required>
+            <button type="submit">Generate</button>
+        </form>
+
+        <div class="qr-preview">
+            {% if qr_image_base64 %}
+                <!-- The image is embedded directly as base64 data, no extra request needed -->
+                <img src="data:image/png;base64,{{ qr_image_base64 }}" alt="Generated QR code">
+            {% else %}
+                <div class="qr-placeholder">
+                    <span>Your QR code will appear here</span>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer>
+        <p>Built as part of a DevOps learning project · Linux · Docker · GitHub Actions</p>
+    </footer>
+</body>
+</html>
