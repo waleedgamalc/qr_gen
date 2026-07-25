@@ -1,2 +1,9 @@
 venv/
 __pycache__/
+qr-app-key*
+userdata.sh
+*.tfstate
+*.tfstate.*
+aws/*
+terraform.tfstate*
+.terraform*
