@@ -71,15 +71,15 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             
-            echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+            echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
             docker stop qr-app || true
             docker rm qr-app || true
 
-            docker pull ${{ secrets.DOCKER_USERNAME }}/qr-code-app
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/qr-code-app
 
             docker run -d \
               --name qr-app \
               --restart unless-stopped \
               -p 50:5000 \
-              ${{ secrets.DOCKER_USERNAME }}/qr-code-app
+              ${{ secrets.DOCKERHUB_USERNAME }}/qr-code-app
