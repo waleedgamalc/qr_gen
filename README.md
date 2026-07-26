@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://circleci.com/topics/devops/" alt="Banner" width="100%">
-</p>
-
 # QR Generator - DevOps Project
 
 A simple Flask web application that generates QR codes from user input.
